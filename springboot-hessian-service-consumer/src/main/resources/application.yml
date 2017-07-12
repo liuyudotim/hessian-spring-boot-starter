@@ -1,0 +1,11 @@
+
+spring:
+  application:
+    name: springboot-hessian-service-consumer
+server:
+  port: 9004
+eureka:
+  client:
+    service-url:
+      defaultZone: http://n1.eureka.yunling.org/eureka/
+debug: true

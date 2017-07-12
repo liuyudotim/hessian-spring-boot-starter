@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yuisme.springboot.hessian</groupId>
-    <artifactId>hessian-client-spring-boot-starter</artifactId>
+    <artifactId>hessian-service-spring-boot-starter</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Spring Boot AutoConfiguration :: Hessian Client Starter</name>
+    <name>Spring Boot AutoConfiguration :: Hessian Service Starter</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
