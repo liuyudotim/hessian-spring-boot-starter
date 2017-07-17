@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>hessian-client-spring-boot-starter</module>
-        <module>hessian-service-spring-boot-starter</module>
+        <module>springboot-hessian-service</module>
         <module>springboot-hessian-service-consumer</module>
     </modules>
     <packaging>pom</packaging>
