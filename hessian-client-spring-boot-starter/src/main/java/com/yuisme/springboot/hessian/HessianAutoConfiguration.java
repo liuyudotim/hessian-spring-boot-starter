@@ -7,6 +7,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackages;
 import org.springframework.context.ResourceLoaderAware;
 import org.springframework.context.annotation.Configuration;
@@ -73,7 +74,9 @@ public class HessianAutoConfiguration {
         }
     }
 
+
     @Configuration
+    @AutoConfigurationPackage
     @Import({AutoConfiguredHessianClientsScannerRegistrar.class})
     public static class MapperScannerRegistrarNotFoundConfiguration {
     }
