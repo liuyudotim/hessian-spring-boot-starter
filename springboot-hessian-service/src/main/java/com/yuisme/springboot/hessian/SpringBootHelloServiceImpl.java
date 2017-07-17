@@ -1,11 +1,11 @@
 package com.yuisme.springboot.hessian;
 
-import com.yuisme.springboot.hessian.annotations.HessianService;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by liuyu on 2017/5/24.
  */
-@HessianService(SpringBootHelloService.class)
+@Service
 public class SpringBootHelloServiceImpl implements SpringBootHelloService {
     @Override
     public String hello(String name) {
