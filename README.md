@@ -24,15 +24,14 @@ SpringBootApplication
 ```java
 @EnableDiscoveryClient
 @SpringBootApplication
-@Configuration
-@ComponentScan("net.yunling.utd.springboot.hessian")
+@ComponentScan("com.yuisme.springboot.hessian")
 public class HessianServiceConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(HessianServiceConsumerApplication.class, args);
     }
 }
 ```
->`net.yunling.utd.springboot.hessian`为Hessian Client接口所在的包
+>`com.yuisme.springboot.hessian`为Hessian Client接口所在的包
 
 application.yml
 
