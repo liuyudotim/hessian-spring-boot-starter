@@ -31,7 +31,7 @@ public class HessianServiceConsumerApplication {
     }
 }
 ```
->`com.yuisme.springboot.hessian`为Hessian Client接口所在的包
+>`com.yuisme.springboot.hessian`:The package hessian clients are located
 
 application.yml
 
