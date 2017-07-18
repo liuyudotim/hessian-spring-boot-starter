@@ -3,10 +3,11 @@
 ### Add dependence
 
 ```xml
-<groupId>com.yuisme.springboot.hessian</groupId>
+<dependency>
+	<groupId>com.yuisme.springboot.hessian</groupId>
 	<artifactId>hessian-client-spring-boot-starter</artifactId>
-<version>1.0-SNAPSHOT</version>
-```
+	<version>1.0-SNAPSHOT</version>
+</dependency>```
 
 ### Use @HessianClient annotation
 Hessian client interface
