@@ -21,7 +21,7 @@ public interface SpringBootHelloService {
 
 SpringBootApplication
 
-```
+```java
 @EnableDiscoveryClient
 @SpringBootApplication
 @Configuration
@@ -36,7 +36,7 @@ public class HessianServiceConsumerApplication {
 
 application.yml
 
-```
+```yml
 spring:
   application:
     name: springboot-hessian-service-consumer
