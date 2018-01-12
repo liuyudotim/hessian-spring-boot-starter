@@ -1,4 +1,4 @@
-package com.yuisme.springboot.hessian;
+package com.digvwell.springboot.hessian;
 
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;

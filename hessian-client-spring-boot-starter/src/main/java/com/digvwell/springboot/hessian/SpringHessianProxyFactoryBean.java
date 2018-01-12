@@ -1,4 +1,4 @@
-package com.yuisme.springboot.hessian;
+package com.digvwell.springboot.hessian;
 
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.beans.factory.FactoryBean;

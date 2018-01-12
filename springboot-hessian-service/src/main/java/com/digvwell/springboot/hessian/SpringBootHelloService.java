@@ -1,4 +1,4 @@
-package com.yuisme.springboot.hessian;
+package com.digvwell.springboot.hessian;
 
 /**
  * Created by liuyu on 2017/5/24.

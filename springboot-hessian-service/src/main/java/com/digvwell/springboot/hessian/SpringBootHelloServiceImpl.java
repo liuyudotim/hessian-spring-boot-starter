@@ -1,4 +1,4 @@
-package com.yuisme.springboot.hessian;
+package com.digvwell.springboot.hessian;
 
 import org.springframework.stereotype.Service;
 

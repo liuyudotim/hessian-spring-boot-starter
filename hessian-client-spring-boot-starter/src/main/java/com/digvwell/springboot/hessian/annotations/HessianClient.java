@@ -1,4 +1,4 @@
-package com.yuisme.springboot.hessian.annotations;
+package com.digvwell.springboot.hessian.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;

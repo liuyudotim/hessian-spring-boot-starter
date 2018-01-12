@@ -1,6 +1,6 @@
-package com.yuisme.springboot.hessian;
+package com.digvwell.springboot.hessian;
 
-import com.yuisme.springboot.hessian.annotations.HessianClient;
+import com.digvwell.springboot.hessian.annotations.HessianClient;
 
 /**
  * Created by liuyu on 2017/5/24.

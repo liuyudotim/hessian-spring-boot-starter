@@ -1,4 +1,4 @@
-package com.yuisme.springboot.hessian;
+package com.digvwell.springboot.hessian;
 
 import com.caucho.hessian.HessianException;
 import com.caucho.hessian.client.HessianConnectionException;

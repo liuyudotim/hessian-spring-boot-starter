@@ -1,6 +1,6 @@
-package com.yuisme.springboot.hessian;
+package com.digvwell.springboot.hessian;
 
-import com.yuisme.springboot.hessian.annotations.HessianClient;
+import com.digvwell.springboot.hessian.annotations.HessianClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
