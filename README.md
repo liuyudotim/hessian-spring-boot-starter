@@ -4,7 +4,7 @@
 
 ```xml
 <dependency>
-	<groupId>com.yuisme.springboot.hessian</groupId>
+	<groupId>com.digvwell.springboot.hessian</groupId>
 	<artifactId>hessian-client-spring-boot-starter</artifactId>
 	<version>1.0-SNAPSHOT</version>
 </dependency>
@@ -26,14 +26,14 @@ SpringBootApplication
 ```java
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan("com.yuisme.springboot.hessian")
+@ComponentScan("com.digvwell.springboot.hessian")
 public class HessianServiceConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(HessianServiceConsumerApplication.class, args);
     }
 }
 ```
->`com.yuisme.springboot.hessian`:The package hessian clients are located
+>`com.digvwell.springboot.hessian`:The package hessian clients are located
 
 application.yml
 
