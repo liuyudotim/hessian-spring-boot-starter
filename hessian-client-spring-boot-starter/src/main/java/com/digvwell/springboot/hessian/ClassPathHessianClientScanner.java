@@ -103,10 +103,12 @@ public class ClassPathHessianClientScanner extends ClassPathBeanDefinitionScanne
 
             if (definition instanceof ScannedGenericBeanDefinition) {
                 String serviceInterface = ((ScannedGenericBeanDefinition) definition).getMetadata().getClassName();
-                String host = String.valueOf(((ScannedGenericBeanDefinition) definition).getMetadata().getAnnotationAttributes(this.annotationClass.getName()).get("value"));
-                String path = String.valueOf(((ScannedGenericBeanDefinition) definition).getMetadata().getAnnotationAttributes(this.annotationClass.getName()).get("path"));
+                String packageName = serviceInterface.substring(0, serviceInterface.lastIndexOf("."));
+                HessianServiceClientScanBean scanBean = HessianServiceClientScannerRegistrar.serviceMap.get(packageName);
+                String host = scanBean.getServiceName();
+                String path = scanBean.getPath();
                 if ("".equals(path)) {
-                    path = "/" + serviceInterface.substring(serviceInterface.lastIndexOf(".") + 1);
+                    path = "/" + serviceInterface.substring(serviceInterface.lastIndexOf('.') + 1);
                 }
 
                 definition.getPropertyValues().addPropertyValue("serviceInterface", serviceInterface);

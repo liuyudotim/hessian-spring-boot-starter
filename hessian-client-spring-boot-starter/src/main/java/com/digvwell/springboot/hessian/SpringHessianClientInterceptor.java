@@ -27,9 +27,7 @@ public class SpringHessianClientInterceptor extends HessianClientInterceptor {
     private HessianProxyFactory proxyFactory = new HessianProxyFactory();
     private HashMap hessianProxyMap = new HashMap();
 
-    public SpringHessianClientInterceptor() {
-    }
-
+    @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         String url = null;
 
@@ -41,6 +39,11 @@ public class SpringHessianClientInterceptor extends HessianClientInterceptor {
                 String[] urlItems = url.split("/");
                 String service = urlItems[2];
                 ServiceInstance serviceInstance = loadBalancer.choose(service);
+
+                if (serviceInstance == null){
+                    throw new Exception(service + " not existe, please check the service name or the service instance list.");
+                }
+
                 String serviceUrl = url.replace(service, serviceInstance.getHost() + ":" + serviceInstance.getPort());
                 hessianProxy = this.proxyFactory.create(this.getServiceInterface(), serviceUrl, this.getBeanClassLoader());
                 this.hessianProxyMap.put(url, hessianProxy);
