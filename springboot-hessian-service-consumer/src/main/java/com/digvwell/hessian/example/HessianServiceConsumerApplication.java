@@ -1,4 +1,4 @@
-package com.digvwell.hessian.example.service;
+package com.digvwell.hessian.example;
 
 import com.digvwell.hessian.springboot.HessianServiceClientScan;
 import com.digvwell.hessian.springboot.HessianServiceClientScans;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @Configuration
 @HessianServiceClientScans(
-        @HessianServiceClientScan(serviceName = "springboot-hessian-service", basePackage = "com.digvwell.hessian.springboot.hessian.service", path = "/")
+        @HessianServiceClientScan(serviceName = "springboot-hessian-service", basePackage = "com.digvwell.hessian.example.service", path = "/")
 )
 public class HessianServiceConsumerApplication {
     public static void main(String[] args) {

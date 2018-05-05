@@ -1,5 +1,6 @@
-package com.digvwell.hessian.example.service;
+package com.digvwell.hessian.example.controller;
 
+import com.digvwell.hessian.example.service.SpringBootHelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

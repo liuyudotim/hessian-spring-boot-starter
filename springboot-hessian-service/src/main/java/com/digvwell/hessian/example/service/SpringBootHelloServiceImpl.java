@@ -1,4 +1,4 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.example.service;
 
 import org.springframework.stereotype.Service;
 

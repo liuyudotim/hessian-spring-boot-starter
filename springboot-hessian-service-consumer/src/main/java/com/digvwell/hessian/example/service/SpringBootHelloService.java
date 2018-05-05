@@ -1,4 +1,4 @@
-package com.digvwell.hessian.example;
+package com.digvwell.hessian.example.service;
 
 
 /**
