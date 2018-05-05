@@ -1,18 +1,18 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.example;
 
+import com.digvwell.hessian.springboot.HessianServiceClientScan;
+import com.digvwell.hessian.springboot.HessianServiceClientScans;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * Created by liuyu on 2017/7/5.
- */
 @EnableDiscoveryClient
 @SpringBootApplication
 @Configuration
-@ComponentScan("net.yunling.utd.springboot.hessian")
+@HessianServiceClientScans(
+        @HessianServiceClientScan(serviceName = "springboot-hessian-service", basePackage = "com.digvwell.hessian.example.service", path = "/")
+)
 public class HessianServiceConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(HessianServiceConsumerApplication.class, args);

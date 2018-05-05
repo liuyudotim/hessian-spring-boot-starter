@@ -1,5 +1,6 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.springboot;
 
+import com.digvwell.hessian.springboot.spring.XBeanNameGenerator;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
@@ -18,13 +19,11 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
-/**
- * Created by liuyu on 2017/7/6.
- */
 public class ClassPathHessianClientScanner extends ClassPathBeanDefinitionScanner {
 
     private Class<? extends Annotation> annotationClass;
     private Class<?> markerInterface;
+    private XBeanNameGenerator beanNameGenerator = new XBeanNameGenerator();
 
     public ClassPathHessianClientScanner(BeanDefinitionRegistry registry) {
         super(registry, false);
@@ -32,6 +31,7 @@ public class ClassPathHessianClientScanner extends ClassPathBeanDefinitionScanne
 
     @Override
     public Set<BeanDefinitionHolder> doScan(String... basePackages) {
+        this.setBeanNameGenerator(this.beanNameGenerator);
         Set<BeanDefinitionHolder> beanDefinitions = super.doScan(basePackages);
 
         if (!beanDefinitions.isEmpty()) {
@@ -103,14 +103,14 @@ public class ClassPathHessianClientScanner extends ClassPathBeanDefinitionScanne
 
             if (definition instanceof ScannedGenericBeanDefinition) {
                 String serviceInterface = ((ScannedGenericBeanDefinition) definition).getMetadata().getClassName();
-                String host = String.valueOf(((ScannedGenericBeanDefinition) definition).getMetadata().getAnnotationAttributes(this.annotationClass.getName()).get("value"));
-                String path = String.valueOf(((ScannedGenericBeanDefinition) definition).getMetadata().getAnnotationAttributes(this.annotationClass.getName()).get("path"));
-                if ("".equals(path)) {
-                    path = "/" + serviceInterface.substring(serviceInterface.lastIndexOf(".") + 1);
-                }
+                String packageName = serviceInterface.substring(0, serviceInterface.lastIndexOf("."));
+                HessianServiceClientScanBean scanBean = HessianServiceClientScannerRegister.serviceMap.get(packageName);
+                String host = scanBean.getServiceName();
+                String path = scanBean.getPath() + "/" + serviceInterface.substring(serviceInterface.lastIndexOf('.') + 1);
 
                 definition.getPropertyValues().addPropertyValue("serviceInterface", serviceInterface);
                 definition.getPropertyValues().addPropertyValue("serviceUrl", "http://" + host + path);
+//                definition.setFactoryBeanName();
             }
         }
     }

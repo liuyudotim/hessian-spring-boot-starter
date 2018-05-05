@@ -1,11 +1,8 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.springboot;
 
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.beans.factory.FactoryBean;
 
-/**
- * Created by liuyu on 2017/7/6.
- */
 public class SpringHessianProxyFactoryBean extends SpringHessianClientInterceptor implements FactoryBean<Object> {
     private Object serviceProxy;
     @Override

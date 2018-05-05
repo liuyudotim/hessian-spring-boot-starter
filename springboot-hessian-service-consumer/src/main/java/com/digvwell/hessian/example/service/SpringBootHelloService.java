@@ -1,4 +1,5 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.example.service;
+
 
 /**
  * Created by liuyu on 2017/5/24.
