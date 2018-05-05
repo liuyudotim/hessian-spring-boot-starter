@@ -1,4 +1,4 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.springboot;
 
 public class HessianServiceClientScanBean {
     private String basePackage;

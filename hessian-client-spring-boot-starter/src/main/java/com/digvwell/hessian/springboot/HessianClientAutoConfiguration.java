@@ -1,4 +1,4 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.springboot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +18,6 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
-/**
- * Created by liuyu on 2017/7/6.
- */
 @Configuration
 public class HessianClientAutoConfiguration {
     @Configuration

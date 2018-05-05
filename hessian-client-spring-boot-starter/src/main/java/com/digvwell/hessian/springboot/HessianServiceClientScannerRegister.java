@@ -1,4 +1,4 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.springboot;
 
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ResourceLoaderAware;
@@ -10,7 +10,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.*;
 
-public class HessianServiceClientScannerRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware {
+public class HessianServiceClientScannerRegister implements ImportBeanDefinitionRegistrar, ResourceLoaderAware {
     private ResourceLoader resourceLoader;
 
     public final static Map<String, HessianServiceClientScanBean> serviceMap = new HashMap<>();
@@ -70,9 +70,9 @@ public class HessianServiceClientScannerRegistrar implements ImportBeanDefinitio
     }
 
     /**
-     * A {@link HessianServiceClientScannerRegistrar} for {@link HessianServiceClientScan}.
+     * A {@link HessianServiceClientScannerRegister} for {@link HessianServiceClientScan}.
      */
-    static class RepeatingRegistrar extends HessianServiceClientScannerRegistrar {
+    static class RepeatingRegister extends HessianServiceClientScannerRegister {
         /**
          * {@inheritDoc}
          */

@@ -1,4 +1,4 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.springboot;
 
 import com.caucho.hessian.HessianException;
 import com.caucho.hessian.client.HessianConnectionException;
@@ -16,45 +16,50 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.net.MalformedURLException;
 import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Created by liuyu on 2017/7/6.
- */
 public class SpringHessianClientInterceptor extends HessianClientInterceptor {
     @Autowired
     private LoadBalancerClient loadBalancer;
 
     private HessianProxyFactory proxyFactory = new HessianProxyFactory();
-    private HashMap hessianProxyMap = new HashMap();
+    private Map hessianProxyMap = new HashMap();
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         String url = null;
 
         Object hessianProxy;
+
         try {
             url = this.getServiceUrl();
-            hessianProxy = this.hessianProxyMap.get(url);
+
+            String[] urlItems = url.split("/");
+            String service = urlItems[2];
+            ServiceInstance serviceInstance = loadBalancer.choose(service);
+
+            if (serviceInstance == null) {
+                throw new Exception(service + " not existe, please check the service name or the service instance list.");
+            }
+
+            String host = serviceInstance.getHost();
+            int port = serviceInstance.getPort();
+            String serviceUrl = url.replace(service, host + ":" + port);
+
+            hessianProxy = this.hessianProxyMap.get(serviceUrl);
             if (hessianProxy == null) {
-                String[] urlItems = url.split("/");
-                String service = urlItems[2];
-                ServiceInstance serviceInstance = loadBalancer.choose(service);
-
-                if (serviceInstance == null){
-                    throw new Exception(service + " not existe, please check the service name or the service instance list.");
-                }
-
-                String serviceUrl = url.replace(service, serviceInstance.getHost() + ":" + serviceInstance.getPort());
                 hessianProxy = this.proxyFactory.create(this.getServiceInterface(), serviceUrl, this.getBeanClassLoader());
-                this.hessianProxyMap.put(url, hessianProxy);
+                this.hessianProxyMap.put(serviceUrl, hessianProxy);
             }
         } catch (MalformedURLException var13) {
             throw new RemoteLookupFailureException("Service URL [" + url + "] is invalid", var13);
         }
 
         if (hessianProxy == null) {
-            throw new IllegalStateException("SpringHessianClientInterceptor is not properly initialized - invoke 'prepare' before attempting any operations");
+            throw new IllegalStateException("SpringHessianClientInterceptor is not properly initialized - invoke 'prepare' " +
+                    "before attempting any operations");
         } else {
+
             ClassLoader originalClassLoader = this.overrideThreadContextClassLoader();
 
             Object var19;
@@ -64,7 +69,8 @@ public class SpringHessianClientInterceptor extends HessianClientInterceptor {
             } catch (InvocationTargetException var14) {
                 var19 = this.processInvocationException(var14);
             } catch (Exception var15) {
-                throw new RemoteProxyFailureException("Failed to invoke Hessian proxy for remote service [" + this.getServiceUrl() + "]", var15);
+                throw new RemoteProxyFailureException("Failed to invoke Hessian proxy for remote service [" + this
+                        .getServiceUrl() + "]", var15);
             } finally {
                 this.resetThreadContextClassLoader(originalClassLoader);
             }

@@ -1,6 +1,5 @@
-package com.digvwell.springboot.hessian;
+package com.digvwell.hessian.springboot;
 
-import com.digvwell.springboot.hessian.annotations.HessianClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -19,9 +18,6 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
-/**
- * Created by liuyu on 2017/7/6.
- */
 @Configuration
 public class HessianAutoConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(HessianAutoConfiguration.class);
@@ -55,7 +51,6 @@ public class HessianAutoConfiguration {
                     }
                 }
 
-                scanner.setAnnotationClass(HessianClient.class);
                 scanner.registerFilters();
                 scanner.doScan(StringUtils.toStringArray(packages));
             } catch (IllegalStateException ex) {
