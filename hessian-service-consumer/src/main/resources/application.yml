@@ -1,0 +1,26 @@
+
+spring:
+  application:
+    name: springboot-hessian-service-consumer
+server:
+  port: 7070
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    metadata-map:
+      gray: true
+hessian-starter-springboot-hessian-service:
+  ribbon:
+    # 同一实例最大重试次数，不包括首次调用
+    MaxAutoRetries: 1
+    # 重试其他实例的最大重试次数，不包括首次所选的server
+    MaxAutoRetriesNextServer: 2
+    # 是否所有操作都进行重试
+    OkToRetryOnAllOperations: false
+ribbon:
+    ServerListRefreshInterval: 1000000
+hessian:
+  retry-times: 3
+  retry-interval: 60000

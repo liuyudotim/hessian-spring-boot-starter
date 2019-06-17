@@ -1,3 +1,2 @@
-# Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.digvwell.hessian.springboot.HessianAutoConfiguration
+im.liuyu.hessian.springboot.HessianClientAutoConfiguration

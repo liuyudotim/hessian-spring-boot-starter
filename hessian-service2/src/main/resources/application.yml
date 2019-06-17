@@ -1,0 +1,13 @@
+
+spring:
+  application:
+    name: hessian-starter-springboot-hessian-service2
+server:
+  port: 7072
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    metadata-map:
+      gray: true

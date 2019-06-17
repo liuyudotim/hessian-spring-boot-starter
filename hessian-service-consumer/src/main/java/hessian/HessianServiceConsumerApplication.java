@@ -1,20 +1,15 @@
-# hessian-client-spring-boot-starter
-##  How to use
-### Add dependence
+package hessian;
 
-```xml
-<dependency> 
-  <groupId>im.liuyu.hessian</groupId>  
-  <artifactId>hessian-client-spring-boot-starter</artifactId>  
-  <version>1.0.0-SNAPSHOT</version> 
-</dependency>
-```
+import im.liuyu.hessian.annotation.HessianServiceClientScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-### Use @HessianServiceClientScan annotation
-
-SpringBootApplication
-
-```java
+/**
+ * Created by liuyu on 2017/7/5.
+ */
+@EnableDiscoveryClient
+@SpringBootApplication
 @HessianServiceClientScan(basePackage = "im.liuyu.hessian.service", serviceName = "HESSIAN-STARTER-SPRINGBOOT-HESSIAN-SERVICE")
 @HessianServiceClientScan(basePackage = "im.liuyu.hessian.service2", serviceName = "HESSIAN-STARTER-SPRINGBOOT-HESSIAN-SERVICE2")
 public class HessianServiceConsumerApplication {
@@ -22,4 +17,3 @@ public class HessianServiceConsumerApplication {
         SpringApplication.run(HessianServiceConsumerApplication.class, args);
     }
 }
-```
