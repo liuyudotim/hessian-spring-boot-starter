@@ -4,14 +4,60 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.digvwell.springboot.hessian</groupId>
+    <groupId>im.liuyu.hessian</groupId>
     <artifactId>hessian-spring-boot-starter</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${parent-version}</version>
     <modules>
         <module>hessian-client-spring-boot-starter</module>
-        <module>springboot-hessian-service</module>
-        <module>springboot-hessian-service-consumer</module>
+        <module>hessian-service-client</module>
+        <module>hessian-service</module>
+        <module>hessian-service-client2</module>
+        <module>hessian-service2</module>
+        <module>hessian-service-consumer</module>
+        <module>eureka-server</module>
     </modules>
     <packaging>pom</packaging>
-    <name>Spring Boot Starter :: Hessian</name>
+    <name>Spring Boot AutoConfiguration :: Hessian</name>
+    <properties>
+        <parent-version>1.0.0-SNAPSHOT</parent-version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>1.5.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>1.5.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka</artifactId>
+                <version>1.3.0.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>4.0.38</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>4.3.9.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.25</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-commons</artifactId>
+                <version>1.2.0.RELEASE</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

@@ -1,0 +1,19 @@
+
+spring:
+  application:
+    name: hessian-starter-springboot-hessian-service
+server:
+  port: 7071
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 10
+    metadata-map:
+      gray: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
