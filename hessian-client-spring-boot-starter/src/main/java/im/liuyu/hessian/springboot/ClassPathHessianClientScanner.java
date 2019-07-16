@@ -61,7 +61,7 @@ public class ClassPathHessianClientScanner extends ClassPathBeanDefinitionScanne
             definition = (GenericBeanDefinition) holder.getBeanDefinition();
 
             if (logger.isDebugEnabled()) {
-                logger.debug("Creating MapperFactoryBean with name '" + holder.getBeanName()
+                logger.debug("Creating SpringHessianProxyFactoryBean with name '" + holder.getBeanName()
                         + "' and '" + definition.getBeanClassName() + "' mapperInterface");
             }
 
@@ -73,6 +73,7 @@ public class ClassPathHessianClientScanner extends ClassPathBeanDefinitionScanne
             if (definition instanceof ScannedGenericBeanDefinition) {
                 String serviceInterface = ((ScannedGenericBeanDefinition) definition).getMetadata().getClassName();
                 String packageName = serviceInterface.substring(0, serviceInterface.lastIndexOf("."));
+
                 HessianServiceClientScanBean scanBean = HessianServiceClientScannerRegistrar.serviceMap.get(packageName);
                 String host = scanBean.getServiceName();
                 String path = scanBean.getPath() + "/" + serviceInterface.substring(serviceInterface.lastIndexOf('.') + 1);
