@@ -9,12 +9,6 @@
     <version>${parent-version}</version>
     <modules>
         <module>hessian-client-spring-boot-starter</module>
-        <module>hessian-service-client</module>
-        <module>hessian-service</module>
-        <module>hessian-service-client2</module>
-        <module>hessian-service2</module>
-        <module>hessian-service-consumer</module>
-        <module>eureka-server</module>
     </modules>
     <packaging>pom</packaging>
     <name>Spring Boot AutoConfiguration :: Hessian</name>
